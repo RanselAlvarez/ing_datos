@@ -1,0 +1,7 @@
+[INFO] -- 2026-05-29T01:04:40 -- Temperatura: 25.4 °C
+[ERROR] -- 2026-05-29T01:05:00 -- Error al obtener la temperatura: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=23.1136&longitude=-82.3667&current_weather=True (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno 11001] getaddrinfo failed)"))
+[INFO]  -- 2026-05-29T01:06:26 -- Temperatura: 25.4 °C
+[INFO]  -- 2026-05-29T01:06:58 -- Temperatura: 25.4 °C
+[ERROR] -- 2026-05-29T01:07:15 -- Error al obtener la temperatura: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=23.1136&longitude=-82.3667&current_weather=True (Caused by NameResolutionError("HTTPSConnection(host='api.open-meteo.com', port=443): Failed to resolve 'api.open-meteo.com' ([Errno 11001] getaddrinfo failed)"))
+[INFO]  -- 2026-05-29T01:07:39 -- Temperatura: 25.4 °C
+[INFO]  -- 2026-05-29T01:08:27 -- Temperatura: 25.4 °C
