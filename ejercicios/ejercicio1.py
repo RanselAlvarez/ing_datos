@@ -1,7 +1,10 @@
 import requests
 import logging
 import json
+import csv
 from datetime import datetime
+from pathlib import Path
+
 
 
 logging.basicConfig(
@@ -27,6 +30,9 @@ params = {
         "current_weather": True,
 }
 
+# Encabezado del archivo CSV
+encabezados = ["fecha", "temperatura", "unidad"]
+
 
 try:
     # Peticion a la API de OpenMeteo para obtener datos del clima
@@ -49,16 +55,29 @@ try:
     temperatura = respuesta_json["current_weather"]["temperature"]
     celsius = respuesta_json["current_weather_units"]["temperature"]
 
-    nivel = '[INFO]'
-    with open('datos_temperatura.txt', 'a', encoding='utf-8') as archivo:
+    # nivel = '[INFO]'
+    
+    archivo_csv = Path(__file__).parent / "datos_temperatura.csv"
+
+    
+    
+    with open(archivo_csv, 'a', newline="", encoding='utf-8') as archivo:
+        escritor = csv.DictWriter(archivo, fieldnames=encabezados)
+        
+        if not archivo_csv.exists() or archivo_csv.stat().st_size == 0:
+            escritor.writeheader()
+        
+        escritor.writerow({"fecha": fecha, "temperatura": temperatura, "unidad": celsius})    
+        
+        
         logging.info(f"Temperatura: {temperatura} {celsius}")
-        archivo.write(f"{nivel}  -- {fecha} -- Temperatura: {temperatura} {celsius}\n")
+        # archivo.write(f"{nivel}  -- {fecha} -- Temperatura: {temperatura} {celsius}\n")
 
     print(f"{temperatura} {celsius}")
 
 
 except Exception as e:
-    nivel = '[ERROR]'
+    # nivel = '[ERROR]'
     logging.error(f"Error al obtener la temperatura: {e}")
-    with open('datos_temperatura.txt', 'a') as archivo:
-        archivo.write(f"{nivel} -- {fecha} -- Error al obtener la temperatura: {e}\n")
+    # with open('app.log', 'a') as archivo:
+        # archivo.write(f"{nivel} -- {fecha} -- Error al obtener la temperatura: {e}\n")
