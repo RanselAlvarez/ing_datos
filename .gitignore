@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter / Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Datos y archivos temporales (ajusta según tu estructura)
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno y secretos (¡importante!)
+.env
+*.env
+config_local.py
+secrets.json
+
+# Docker
+.docker/
+*.dockerignore
+
+# IDEs y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Git
+.git/
+.gitignore
+
+# Output de procesamiento (si generas archivos derivados)
+output/
+results/
+*.csv
+*.parquet
+!datos_originales/  # <-- Mantén esta línea si quieres subir solo los datos fuente
