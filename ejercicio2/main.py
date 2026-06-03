@@ -38,7 +38,6 @@ encabezados_csv = ["Fecha", "IP", "Pais", "Ciudad"]
 ruta_archivo_csv = Path(__file__).parent / "registro_api_whois.csv"
 
 
-
 try:
     # Haciendo requests a la API
     respuesta = requests.get(url_base, params=parametros, timeout=5)
