@@ -1,0 +1,7 @@
+2026-06-03 16:56:21 - ERROR - Error al obtener la información de la IP: HTTPConnectionPool(host='ipwho.is', port=80): Read timed out. (read timeout=5)
+2026-06-03 16:56:37 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 17:13:38 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 17:21:40 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 17:26:22 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 18:12:09 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 18:15:56 - ERROR - Error al obtener la información de la IP: HTTPConnectionPool(host='ipwho.is', port=80): Max retries exceeded with url: /?fields=ip%2Ccountry%2Ccity (Caused by NameResolutionError("HTTPConnection(host='ipwho.is', port=80): Failed to resolve 'ipwho.is' ([Errno 11001] getaddrinfo failed)"))

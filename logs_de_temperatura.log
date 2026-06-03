@@ -1,0 +1,6 @@
+[ERROR] -- HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=23.1136&longitude=-82.3667&current_weather=True (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.open-meteo.com', port=443) at 0x1104550>, 'Connection to api.open-meteo.com timed out. (connect timeout=None)')), al obtener la temperatura.
+[INFO] -- Temperatura: 25.3 °C 2026-05-28T22:30
+[INFO] -- Temperatura: 25.3 °C -- 2026-05-28T22:31
+[ERROR] -- HTTPSConnectionPool(host='api.open-meteo.com', port=443): Max retries exceeded with url: /v1/forecast?latitude=23.1136&longitude=-82.3667&current_weather=True (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.open-meteo.com', port=443) at 0x3863510>, 'Connection to api.open-meteo.com timed out. (connect timeout=5)')) -- 2026-05-28T22:34
+[INFO] -- Temperatura: 25.3 °C -- 2026-05-28T22:34
+----------------------------------------------------------------------------
