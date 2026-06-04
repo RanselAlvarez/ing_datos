@@ -6,3 +6,10 @@
 2026-06-03 18:12:09 - INFO - Se ha obtenido la información de la IP correctamente.
 2026-06-03 18:15:56 - ERROR - Error al obtener la información de la IP: HTTPConnectionPool(host='ipwho.is', port=80): Max retries exceeded with url: /?fields=ip%2Ccountry%2Ccity (Caused by NameResolutionError("HTTPConnection(host='ipwho.is', port=80): Failed to resolve 'ipwho.is' ([Errno 11001] getaddrinfo failed)"))
 2026-06-03 21:02:48 - ERROR - Error HTTP al obtener la información de la IP:404 Client Error: Not Found for url: http://ipwho.is/falso?fields=ip%2Ccountry%2Ccity
+2026-06-03 21:18:02 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:19:15 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:21:59 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:22:40 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:25:16 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:26:57 - INFO - Se ha obtenido la información de la IP correctamente.
+2026-06-03 21:30:48 - INFO - Se ha obtenido la información de la IP correctamente.

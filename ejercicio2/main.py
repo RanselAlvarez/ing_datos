@@ -17,12 +17,13 @@ logging.basicConfig(
 )
 
 # URL de la API
-url_base = "http://ipwho.is/"
+url_base = "http://ipwho.is/8.8.8.8"
 
 # Parametros de la API
 parametros = {
             "fields": "ip,country,city",
-            # "ip": "",
+            # "country": "",
+            # "city": "",
             # "lang": "es"
 }
 
@@ -38,15 +39,25 @@ encabezados_csv = ["Fecha", "IP", "Pais", "Ciudad"]
 ruta_archivo_csv = Path(__file__).parent / "registro_api_whois.csv"
 
 
+
+
 try:
     # Haciendo requests a la API
-    respuesta = requests.get(url_base, params=parametros, timeout=5)
-
+    respuesta = requests.get(url_base,  timeout=5)
+    
     # Verificando que la solicitud fue exitosa.
     respuesta.raise_for_status()
 
     # Transformamos la respuesta JSON en un diccionario
     respuesta_json = respuesta.json()
+
+
+    # Imprimiendo la URL de la petición
+    print(f"Url de la peticion: {respuesta.url}")
+    print(f"Toda la info: {respuesta_json}")
+
+
+
     # Extraemos la información relevante
     # La IP, el país y la ciudad con get, si no se necuentra la informacion se devuelve un string por defecto
     ip = respuesta_json.get("ip", "IP Desconocido")
