@@ -24,7 +24,7 @@ respuesta= requests.get(url_base, params=params, timeout=5)*
 
 *respuesta_json=respuesta.json()*
 
----------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ***Obtener la fecha y hora en el momento que se ejecute el script.***
 
@@ -32,19 +32,15 @@ respuesta= requests.get(url_base, params=params, timeout=5)*
 
 *fecha=datetime.now().strftime("%Y-%m-%dT%H:%M:%S")*
 
-
 ***Revisamos que codigo de estado devuelve la API***
 
    *status_code=respuesta.status_code*
 
  *print(status_code)*
 
-
-
 #### *Encabezado del archivo CSV*
 
 *encabezados= ["fecha", "temperatura", "unidad"]*
-
 
 #### Trabajando con archivo CSV, se crea el escritor y se escribe solo una vez los encabezados.
 
@@ -57,3 +53,33 @@ respuesta= requests.get(url_base, params=params, timeout=5)*
  *escritor.writeheader()*
 
  *escritor.writerow({"fecha": fecha, "temperatura": temperatura, "unidad": celsius})*
+
+
+
+
+#### Alguno de los tipos de except que vamos a usar.
+
+*except HTTPError as e:*
+
+ *# Aqui guardamos el error en el log (Mensaje de error)*
+
+ *logging.error(f"Error HTTP al obtener la información de la IP:{e}")*
+
+*except requests.exceptions.RequestException as e:*
+
+ *# Aqui guardamos el error en el log (Mensaje de error)*
+
+ *logging.error(f"Error al obtener la información de la IP: {e}")*
+
+*except Exception as e:*
+
+ *# Aquí guardamos el error en el log (e)*
+
+ *logging.error(f"Error general al obtener la información de la IP: {e}")*
+
+
+***Para poder capturar los except HTTPError es necesario:***
+
+    # Verificando que la solicitud fue exitosa.
+
+ *respuesta.raise_for_status()*
