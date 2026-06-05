@@ -43,7 +43,7 @@ try:
         servidor.starttls()
         
         # 3. Nos identificamos (¡Ojo! Aquí va tu contraseña de APP, no la normal)
-        servidor.login(REMITENTE, CONTRASENA_APP)
+        servidor.login(REMITENTE, CONTRASENA_APP) # type: ignore
         
         # 4. Enviamos el mensaje
         servidor.send_message(mensaje)

@@ -5,6 +5,9 @@ from datetime import datetime
 import logging
 import csv
 from pathlib import Path
+from notificador import enviar_alerta
+
+
 
 logging.basicConfig(
                     level=logging.INFO,
@@ -37,8 +40,6 @@ encabezados_csv = ["Fecha", "IP", "Pais", "Ciudad"]
 
 # Path del archivo CSV
 ruta_archivo_csv = Path(__file__).parent / "registro_api_whois.csv"
-
-
 
 
 try:
@@ -76,17 +77,31 @@ try:
         
         escritor_csv.writerow({"Fecha": fecha, "IP": ip, "Pais": pais, "Ciudad": ciudad})
     
+    contenido_mensaje_email = f"{fecha} - {ip} - {pais} - {ciudad}"
+    # Aqui enviamos alerta por email
+    enviar_alerta("[INFO]", contenido_mensaje_email)
+    
     # Aqui guandamos la informacion en el log (Mensaje exitoso)    
     logging.info("Se ha obtenido la información de la IP correctamente.")
+    
 # El orden de los Excepts es importante para que se capturen los errores en el orden correcto
 except HTTPError as e:           
     # Aqui guardamos el error en el log (Mensaje de error)    
     logging.error(f"Error HTTP al obtener la información de la IP:{e}")                
+
+    enviar_alerta("[ERROR]", {e})
+    
 except RequestException as e:
     # Aqui guardamos el error en el log (Mensaje de error)    
     logging.error(f"Error al obtener la información de la IP: {e}")
+    
+    enviar_alerta("[ERROR]", {e})
+    
 except Exception as e:            
     # Aquí guardamos el error en el log (e)
     logging.error(f"Error general al obtener la información de la IP: {e}")
-                    
+    
+    enviar_alerta("[ERROR]", {e})
+    
+#===========================================================================================================                
     
