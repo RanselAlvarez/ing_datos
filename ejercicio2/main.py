@@ -1,3 +1,10 @@
+'''
+APRENDIENDO EL USO DE APIS, AQUI USAMOS LA API DE WHOIS, UNA API QUE DEVUELVE INFORMACION DE UN IP,
+IMPLEMENTE ENVIO DE NOTIFICACION POR CORREO ELECTRONICO
+'''
+
+
+
 import requests
 from requests.exceptions import RequestException, HTTPError
 import json
@@ -77,8 +84,8 @@ try:
         
         escritor_csv.writerow({"Fecha": fecha, "IP": ip, "Pais": pais, "Ciudad": ciudad})
     
-    contenido_mensaje_email = f"{fecha} - {ip} - {pais} - {ciudad}"
     # Aqui enviamos alerta por email
+    contenido_mensaje_email = f"{fecha} - {ip} - {pais} - {ciudad}"
     enviar_alerta("[INFO]", contenido_mensaje_email)
     
     # Aqui guandamos la informacion en el log (Mensaje exitoso)    
