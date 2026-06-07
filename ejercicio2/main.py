@@ -12,9 +12,10 @@ from datetime import datetime
 import logging
 import csv
 from pathlib import Path
-from notificador import enviar_alerta
+from notificador import enviar_alerta, enviar_correos_pendientes, guardar_pendientes
 
-
+# Fecha actual del script
+fecha = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 
 logging.basicConfig(
                     level=logging.INFO,
@@ -26,6 +27,9 @@ logging.basicConfig(
 
 )
 
+
+enviar_correos_pendientes()
+
 # URL de la API
 url_base = "http://ipwho.is/8.8.8.8"
 
@@ -36,10 +40,6 @@ parametros = {
             # "city": "",
             # "lang": "es"
 }
-
-# Fecha actual del script
-fecha = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-
 
 # PARA EL CSV
 # Encabezado del archivo CSV
@@ -60,17 +60,12 @@ try:
     respuesta_json = respuesta.json()
 
 
-    # Imprimiendo la URL de la petición
-    print(f"Url de la peticion: {respuesta.url}")
-    print(f"Toda la info: {respuesta_json}")
-
-
-
     # Extraemos la información relevante
     # La IP, el país y la ciudad con get, si no se necuentra la informacion se devuelve un string por defecto
     ip = respuesta_json.get("ip", "IP Desconocido")
     pais = respuesta_json.get("country", "Pais Desconocido")
     ciudad = respuesta_json.get("city", "Ciiudad Desconocida")
+    
     print(f"Tu ip es: {ip}")
     print(f"Pais: {pais}")
     print(f"Ciudad: {ciudad}")
@@ -96,19 +91,25 @@ except HTTPError as e:
     # Aqui guardamos el error en el log (Mensaje de error)    
     logging.error(f"Error HTTP al obtener la información de la IP:{e}")                
 
-    enviar_alerta("[ERROR]", {e})
+    envio = enviar_alerta("[ERROR]", {str(e)})
+    if not envio:
+        guardar_pendientes("[ERROR]", {str(e)})
+    
     
 except RequestException as e:
     # Aqui guardamos el error en el log (Mensaje de error)    
     logging.error(f"Error al obtener la información de la IP: {e}")
     
-    enviar_alerta("[ERROR]", {e})
-    
+    envio = enviar_alerta("[ERROR]", str(e))
+    if not envio:
+        guardar_pendientes("[ERROR]", str(e))
+
 except Exception as e:            
     # Aquí guardamos el error en el log (e)
     logging.error(f"Error general al obtener la información de la IP: {e}")
     
-    enviar_alerta("[ERROR]", {e})
-    
+    envio = enviar_alerta("[ERROR]", str(e))
+    if not envio:
+        guardar_pendientes("[ERROR]", str(e))    
 #===========================================================================================================                
     

@@ -1,0 +1,17 @@
+[
+    {
+        "fecha": "2026-06-07T18:10:48",
+        "asunto": "[ERROR]",
+        "mensaje": "HTTPConnectionPool(host='ipwho.is', port=80): Max retries exceeded with url: /8.8.8.8 (Caused by NameResolutionError(\"HTTPConnection(host='ipwho.is', port=80): Failed to resolve 'ipwho.is' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+        "fecha": "2026-06-07T18:11:09",
+        "asunto": "[ERROR]",
+        "mensaje": "HTTPConnectionPool(host='ipwho.is', port=80): Max retries exceeded with url: /8.8.8.8 (Caused by NameResolutionError(\"HTTPConnection(host='ipwho.is', port=80): Failed to resolve 'ipwho.is' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+        "fecha": "2026-06-07T18:28:32",
+        "asunto": "[ERROR]",
+        "mensaje": "HTTPConnectionPool(host='ipwho.is', port=80): Max retries exceeded with url: /8.8.8.8 (Caused by NameResolutionError(\"HTTPConnection(host='ipwho.is', port=80): Failed to resolve 'ipwho.is' ([Errno 11001] getaddrinfo failed)\"))"
+    }
+]
